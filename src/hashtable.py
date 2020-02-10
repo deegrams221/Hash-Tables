@@ -8,82 +8,88 @@ class LinkedPair:
         self.next = None
 
 class HashTable:
-    '''
-    A hash table that with `capacity` buckets
-    that accepts string keys
-    '''
+    # '''
+    # A hash table that with `capacity` buckets
+    # that accepts string keys
+    # '''
     def __init__(self, capacity):
         self.capacity = capacity  # Number of buckets in the hash table
         self.storage = [None] * capacity
 
 
     def _hash(self, key):
-        '''
-        Hash an arbitrary key and return an integer.
-
-        You may replace the Python hash with DJB2 as a stretch goal.
-        '''
+        # '''
+        # Hash an arbitrary key and return an integer.
+        # You may replace the Python hash with DJB2 as a stretch goal.
+        # '''
         return hash(key)
 
 
     def _hash_djb2(self, key):
-        '''
-        Hash an arbitrary key using DJB2 hash
-
-        OPTIONAL STRETCH: Research and implement DJB2
-        '''
+        # '''
+        # Hash an arbitrary key using DJB2 hash
+        # OPTIONAL STRETCH: Research and implement DJB2
+        # '''
         pass
 
 
     def _hash_mod(self, key):
-        '''
-        Take an arbitrary key and return a valid integer index
-        within the storage capacity of the hash table.
-        '''
+        # '''
+        # Take an arbitrary key and return a valid integer index
+        # within the storage capacity of the hash table.
+        # '''
         return self._hash(key) % self.capacity
 
 
     def insert(self, key, value):
-        '''
-        Store the value with the given key.
+        # '''
+        # Store the value with the given key.
+        # Hash collisions should be handled with Linked List Chaining.
+        # Fill this in.
+        # '''
+        # pass
 
-        Hash collisions should be handled with Linked List Chaining.
-
-        Fill this in.
-        '''
-        pass
+         # compute index of key
+        index = self._hash_mod(key)
+        # for loop, i in range length of storage
+        for i in range(len(self.storage)):
+            # if index of storage is None and i is index
+            if self.storage[i] == None and i == index:
+                # then set storage of index to key, value
+                self.storage[i] = [ key,value ]
+            # else if i is index (just print for now, collision handling tomorrow)
+            elif i == index:
+                print(f"WARNING: Not empty.")
+                return None
 
 
 
     def remove(self, key):
-        '''
-        Remove the value stored with the given key.
-
-        Print a warning if the key is not found.
-
-        Fill this in.
-        '''
+        # '''
+        # Remove the value stored with the given key.
+        # Print a warning if the key is not found.
+        # Fill this in.
+        # '''
         pass
+
 
 
     def retrieve(self, key):
-        '''
-        Retrieve the value stored with the given key.
-
-        Returns None if the key is not found.
-
-        Fill this in.
-        '''
+        # '''
+        # Retrieve the value stored with the given key.
+        # Returns None if the key is not found.
+        # Fill this in.
+        # '''
         pass
 
 
-    def resize(self):
-        '''
-        Doubles the capacity of the hash table and
-        rehash all key/value pairs.
 
-        Fill this in.
-        '''
+    def resize(self):
+        # '''
+        # Doubles the capacity of the hash table and
+        # rehash all key/value pairs.
+        # Fill this in.
+        # '''
         pass
 
 
