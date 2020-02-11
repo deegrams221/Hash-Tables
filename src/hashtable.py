@@ -187,17 +187,17 @@ class HashTable:
 
     # Day 1 Assignment:
         # Doubles the capacity of the hash table & rehash all key/value pairs.
-        self.capacity *= 2
-        new_storage = [None] * self.capacity
-        # for index in range storage // 2
-        for i in range(self.capacity // 2):
-            # set node to storage index
-            node = self.storage[i]
-            # if node is not None, pass for now, collision handling tomorrow
-            if node != None:
-                pass
-        # reassign the referance (change the pointer)
-        self.storage = new_storage
+        # self.capacity *= 2
+        # new_storage = [None] * self.capacity
+        # # for index in range storage // 2
+        # for i in range(self.capacity // 2):
+        #     # set node to storage index
+        #     node = self.storage[i]
+        #     # if node is not None, pass for now, collision handling tomorrow
+        #     if node != None:
+        #         pass
+        # # reassign the referance (change the pointer)
+        # self.storage = new_storage
 
     # '''
     # Notes from Lecture 2/11
@@ -210,12 +210,14 @@ class HashTable:
         #     self.insert(item[0], item[1])
 
     # Day 2 Assignment:
-        # old_storage = self.storage
-        # self.capacity *= 2
-        # self.storage = [None] * self.capacity
+        old_storage = self.storage
+        self.capacity *= 2
+        self.storage = [None] * self.capacity
 
-        # for item in old_storage:
-        #     self.insert(item[0], item[1])
+        for item in old_storage:
+            while item != None:
+                self.insert(item.key, item.value)
+                item = item.next
 
 
 
