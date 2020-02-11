@@ -62,6 +62,15 @@ class HashTable:
                 print(f"\nWARNING: Not empty.")
                 return None
 
+# '''
+# Notes from Lecture 2/11
+# '''
+#         index = self._hash_mod(key)
+#         if self.storage[index] is not None:
+#             print(f"WARNING:  Collision has occured at {index}")
+#         else:
+#             self.storage[index] = (key, value)
+#         return
 
 
     def remove(self, key):
@@ -81,6 +90,18 @@ class HashTable:
             return None
         self.storage[index] = None
 
+# '''
+# Notes from Lecture 2/11
+# '''
+#         index = self._hash_mod(key)
+#         if self.storage[index] is not None:
+#             if self.storage[index][0] == key:
+#                 self.storage[index] = None
+#             else:
+#                 print(f"WARNING:  Collision has occured at {index}")
+#         else:
+#             print(f"Warning key ({key}) not found.")
+#         return
 
     def retrieve(self, key):
         '''
@@ -100,6 +121,18 @@ class HashTable:
             print(f"WARNING: Key doesn't match.")
             return None
 
+# '''
+# Notes from Lecture 2/11
+# '''
+#         index = self._hash_mod(key)
+#         if self.storage[index] is not None:
+#             if self.storage[index][0] == key:
+#                 return self.storage[index][1]
+#             else:
+#                 print(f"WARNING:  Collision has occured at {index}")
+#         else:
+#             return None
+#         return
 
     def resize(self):
         '''
@@ -122,6 +155,16 @@ class HashTable:
         # reassign the referance (change the pointer)
         self.storage = new_storage
 
+# '''
+# Notes from Lecture 2/11
+# '''
+#         old_storage = self.storage
+#         self.capacity *= 2
+#         self.storage = [None] * self.capacity
+
+#         for item in old_storage:
+#             self.insert(item[0], item[1])
+
 
 
 if __name__ == "__main__":
@@ -132,6 +175,13 @@ if __name__ == "__main__":
     ht.insert("line_3", "Linked list saves the day!")
 
     print("")
+
+# '''
+# Notes from Lecture 2/11
+# '''
+#     ht1.insert("key1", "hello")
+#     ht1.insert("unicorn", "goodbye")
+#     ht1.remove("key1")
 
     # Test storing beyond capacity
     print(ht.retrieve("line_1"))
@@ -151,110 +201,3 @@ if __name__ == "__main__":
     print(ht.retrieve("line_3"))
 
     print("")
-
-
-'''
-Notes from Lecture 2/11
-'''
-# class LinkedPair:
-#     def __init__(self, key, value):
-#         self.key = key
-#         self.value = value
-#         self.next = None
-
-# class HashTable:
-#     '''
-#     A hash table that with `capacity` buckets
-#     that accepts string keys
-#     '''
-#     def __init__(self, capacity):
-#         self.capacity = capacity  # Number of buckets in the hash table
-#         self.storage = [None] * capacity
-
-#     def _hash(self, key):
-#         '''
-#         Hash an arbitrary key and return an integer.
-#         You may replace the Python hash with DJB2 as a stretch goal.
-#         '''
-#         return hash(key)
-
-#     def _hash_djb2(self, key):
-#         '''
-#         Hash an arbitrary key using DJB2 hash
-#         OPTIONAL STRETCH: Research and implement DJB2
-#         '''
-#         pass
-
-#     def _hash_mod(self, key):
-#         '''
-#         Take an arbitrary key and return a valid integer index
-#         within the storage capacity of the hash table.
-#         '''
-#         return self._hash(key) % self.capacity
-
-#     def insert(self, key, value):
-#         '''
-#         Store the value with the given key.
-#         Hash collisions should be handled with Linked List Chaining.
-#         Fill this in.
-#         '''
-#         index = self._hash_mod(key)
-#         if self.storage[index] is not None:
-#             print(f"WARNING:  Collision has occured at {index}")
-#         else:
-#             self.storage[index] = (key, value)
-#         return
-
-#     def remove(self, key):
-#         '''
-#         Remove the value stored with the given key.
-#         Print a warning if the key is not found.
-#         Fill this in.
-#         '''
-#         index = self._hash_mod(key)
-#         if self.storage[index] is not None:
-#             if self.storage[index][0] == key:
-#                 self.storage[index] = None
-#             else:
-#                 print(f"WARNING:  Collision has occured at {index}")
-#         else:
-#             print(f"Warning key ({key}) not found.")
-#         return
-
-
-#     def retrieve(self, key):
-#         '''
-#         Retrieve the value stored with the given key.
-#         Returns None if the key is not found.
-#         Fill this in.
-#         '''
-#         index = self._hash_mod(key)
-#         if self.storage[index] is not None:
-#             if self.storage[index][0] == key:
-#                 return self.storage[index][1]
-#             else:
-#                 print(f"WARNING:  Collision has occured at {index}")
-#         else:
-#             return None
-#         return
-
-#     def resize(self):
-#         '''
-#         Doubles the capacity of the hash table and
-#         rehash all key/value pairs.
-#         Fill this in.
-#         '''
-#         old_storage = self.storage
-#         self.capacity *= 2
-#         self.storage = [None] * self.capacity
-
-#         for item in old_storage:
-#             self.insert(item[0], item[1])
-
-
-# if __name__ == "__main__":
-#     ht1 = HashTable(2)
-
-#     ht1.insert("key1", "hello")
-#     ht1.insert("unicorn", "goodbye")
-#     ht1.remove("key1")
