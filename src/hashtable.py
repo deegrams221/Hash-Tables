@@ -1,6 +1,6 @@
-# '''
-# Linked List hash table key/value pair
-# '''
+'''
+Linked List hash table key/value pair
+'''
 class LinkedPair:
     def __init__(self, key, value):
         self.key = key
@@ -8,45 +8,45 @@ class LinkedPair:
         self.next = None
 
 class HashTable:
-    # '''
-    # A hash table that with `capacity` buckets
-    # that accepts string keys
-    # '''
+    '''
+    A hash table that with `capacity` buckets
+    that accepts string keys
+    '''
     def __init__(self, capacity):
         self.capacity = capacity  # Number of buckets in the hash table
         self.storage = [None] * capacity
 
 
     def _hash(self, key):
-        # '''
-        # Hash an arbitrary key and return an integer.
-        # You may replace the Python hash with DJB2 as a stretch goal.
-        # '''
+        '''
+        Hash an arbitrary key and return an integer.
+        You may replace the Python hash with DJB2 as a stretch goal.
+        '''
         return hash(key)
 
 
     def _hash_djb2(self, key):
-        # '''
-        # Hash an arbitrary key using DJB2 hash
-        # OPTIONAL STRETCH: Research and implement DJB2
-        # '''
+        '''
+        Hash an arbitrary key using DJB2 hash
+        OPTIONAL STRETCH: Research and implement DJB2
+        '''
         pass
 
 
     def _hash_mod(self, key):
-        # '''
-        # Take an arbitrary key and return a valid integer index
-        # within the storage capacity of the hash table.
-        # '''
+        '''
+        Take an arbitrary key and return a valid integer index
+        within the storage capacity of the hash table.
+        '''
         return self._hash(key) % self.capacity
 
 
     def insert(self, key, value):
-        # '''
-        # Store the value with the given key.
-        # Hash collisions should be handled with Linked List Chaining.
-        # Fill this in.
-        # '''
+        '''
+        Store the value with the given key.
+        Hash collisions should be handled with Linked List Chaining.
+        Fill this in.
+        '''
         # pass
 
          # compute index of key
@@ -65,11 +65,11 @@ class HashTable:
 
 
     def remove(self, key):
-        # '''
-        # Remove the value stored with the given key.
-        # Print a warning if the key is not found.
-        # Fill this in.
-        # '''
+        '''
+        Remove the value stored with the given key.
+        Print a warning if the key is not found.
+        Fill this in.
+        '''
         # pass
 
         # compute index of key
@@ -83,11 +83,11 @@ class HashTable:
 
 
     def retrieve(self, key):
-        # '''
-        # Retrieve the value stored with the given key.
-        # Returns None if the key is not found.
-        # Fill this in.
-        # '''
+        '''
+        Retrieve the value stored with the given key.
+        Returns None if the key is not found.
+        Fill this in.
+        '''
         # pass
 
         # compute index of key
@@ -102,11 +102,11 @@ class HashTable:
 
 
     def resize(self):
-        # '''
-        # Doubles the capacity of the hash table and
-        # rehash all key/value pairs.
-        # Fill this in.
-        # '''
+        '''
+        Doubles the capacity of the hash table and
+        rehash all key/value pairs.
+        Fill this in.
+        '''
         # pass
 
         # Doubles the capacity of the hash table & rehash all key/value pairs.
@@ -151,3 +151,111 @@ if __name__ == "__main__":
     print(ht.retrieve("line_3"))
 
     print("")
+
+
+'''
+Notes from Lecture 2/11
+'''
+# class LinkedPair:
+#     def __init__(self, key, value):
+#         self.key = key
+#         self.value = value
+#         self.next = None
+
+# class HashTable:
+#     '''
+#     A hash table that with `capacity` buckets
+#     that accepts string keys
+#     '''
+#     def __init__(self, capacity):
+#         self.capacity = capacity  # Number of buckets in the hash table
+#         self.storage = [None] * capacity
+
+#     def _hash(self, key):
+#         '''
+#         Hash an arbitrary key and return an integer.
+#         You may replace the Python hash with DJB2 as a stretch goal.
+#         '''
+#         return hash(key)
+
+#     def _hash_djb2(self, key):
+#         '''
+#         Hash an arbitrary key using DJB2 hash
+#         OPTIONAL STRETCH: Research and implement DJB2
+#         '''
+#         pass
+
+#     def _hash_mod(self, key):
+#         '''
+#         Take an arbitrary key and return a valid integer index
+#         within the storage capacity of the hash table.
+#         '''
+#         return self._hash(key) % self.capacity
+
+#     def insert(self, key, value):
+#         '''
+#         Store the value with the given key.
+#         Hash collisions should be handled with Linked List Chaining.
+#         Fill this in.
+#         '''
+#         index = self._hash_mod(key)
+#         if self.storage[index] is not None:
+#             print(f"WARNING:  Collision has occured at {index}")
+#         else:
+#             self.storage[index] = (key, value)
+#         return
+
+#     def remove(self, key):
+#         '''
+#         Remove the value stored with the given key.
+#         Print a warning if the key is not found.
+#         Fill this in.
+#         '''
+#         index = self._hash_mod(key)
+#         if self.storage[index] is not None:
+#             if self.storage[index][0] == key:
+#                 self.storage[index] = None
+#             else:
+#                 print(f"WARNING:  Collision has occured at {index}")
+#         else:
+#             print(f"Warning key ({key}) not found.")
+#         return
+
+
+#     def retrieve(self, key):
+#         '''
+#         Retrieve the value stored with the given key.
+#         Returns None if the key is not found.
+#         Fill this in.
+#         '''
+#         index = self._hash_mod(key)
+#         if self.storage[index] is not None:
+#             if self.storage[index][0] == key:
+#                 return self.storage[index][1]
+#             else:
+#                 print(f"WARNING:  Collision has occured at {index}")
+#         else:
+#             return None
+#         return
+
+#     def resize(self):
+#         '''
+#         Doubles the capacity of the hash table and
+#         rehash all key/value pairs.
+#         Fill this in.
+#         '''
+#         old_storage = self.storage
+#         self.capacity *= 2
+#         self.storage = [None] * self.capacity
+
+#         for item in old_storage:
+#             self.insert(item[0], item[1])
+
+
+
+# if __name__ == "__main__":
+#     ht1 = HashTable(2)
+
+#     ht1.insert("key1", "hello")
+#     ht1.insert("unicorn", "goodbye")
+#     ht1.remove("key1")
