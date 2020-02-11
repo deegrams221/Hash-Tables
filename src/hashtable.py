@@ -1,6 +1,6 @@
-# '''
-# Linked List hash table key/value pair
-# '''
+'''
+Linked List hash table key/value pair
+'''
 class LinkedPair:
     def __init__(self, key, value):
         self.key = key
@@ -47,6 +47,7 @@ class HashTable:
         Fill this in.
         '''
         # pass
+
 
     # Day 1 Assignment:
         # compute index of key
@@ -100,6 +101,7 @@ class HashTable:
         '''
         # pass
 
+
     # Day 1 Assignment:
         # compute index of key
         # index = self._hash_mod(key)
@@ -134,6 +136,7 @@ class HashTable:
         return
 
 
+
     def retrieve(self, key):
         '''
         Retrieve the value stored with the given key.
@@ -142,6 +145,7 @@ class HashTable:
         '''
         # pass
 
+        
     # Day 1 Assignment:
         # compute index of key
         # index = self._hash_mod(key)
@@ -177,6 +181,7 @@ class HashTable:
         return None
 
 
+
     def resize(self):
         '''
         Doubles the capacity of the hash table and
@@ -184,6 +189,7 @@ class HashTable:
         Fill this in.
         '''
         # pass
+
 
     # Day 1 Assignment:
         # Doubles the capacity of the hash table & rehash all key/value pairs.
@@ -198,6 +204,7 @@ class HashTable:
                 pass
         # reassign the referance (change the pointer)
         self.storage = new_storage
+
 
     # '''
     # Notes from Lecture 2/11
@@ -216,6 +223,7 @@ class HashTable:
 
         # for item in old_storage:
         #     self.insert(item[0], item[1])
+
 
 
 
