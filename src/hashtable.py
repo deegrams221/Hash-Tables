@@ -78,7 +78,7 @@ class HashTable:
         if self.storage[index] is None:
             # just print for now, collision handling tomorrow
             print(f"WARNING: Key not found.")
-            return
+            return None
         self.storage[index] = None
 
 
@@ -88,8 +88,17 @@ class HashTable:
         # Returns None if the key is not found.
         # Fill this in.
         # '''
-        pass
+        # pass
 
+        # compute index of key
+        index = self._hash_mod(key)
+        # if storage of index is not None
+        if self.storage[index] != None:
+            return self.storage[index]
+        else:
+            # just print for now, collision handling tomorrow
+            print(f"WARNING: Key doesn't match.")
+            return None
 
 
     def resize(self):
