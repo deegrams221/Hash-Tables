@@ -50,17 +50,17 @@ class HashTable:
 
     # Day 1 Assignment:
         # compute index of key
-        index = self._hash_mod(key)
-        # for loop, i in range length of storage
-        for i in range(len(self.storage)):
-            # if index of storage is None and i is index
-            if self.storage[i] == None and i == index:
-                # then set storage of index to key, value
-                self.storage[i] = [ key,value ]
-            # else if i is index (just print for now, collision handling tomorrow)
-            elif i == index:
-                print(f"\nWARNING: Not empty.")
-                return None
+        # index = self._hash_mod(key)
+        # # for loop, i in range length of storage
+        # for i in range(len(self.storage)):
+        #     # if index of storage is None and i is index
+        #     if self.storage[i] == None and i == index:
+        #         # then set storage of index to key, value
+        #         self.storage[i] = [ key,value ]
+        #     # else if i is index (just print for now, collision handling tomorrow)
+        #     elif i == index:
+        #         print(f"\nWARNING: Not empty.")
+        #         return None
 
     # '''
     # Notes from Lecture 2/11
@@ -73,13 +73,23 @@ class HashTable:
         # return
 
     # Day 2 Assignment:
-        # index = self._hash_mod(key)
-        # if self.storage[index] is not None:
-        # # Add a Linked List to account for collision
-            
-        # else:
-        #     self.storage[index] = (key, value)
-        # return
+        # Compute index of key
+        index = self._hash_mod(key)
+        # Go to the node corresponding to the hash
+        #  v head
+        node = self.storage[index]
+        # If bucket is empty:
+        if node is None:
+            # Create node, add it, return
+            self.storage[index] = LinkedPair(key, value)
+            return
+        # create a new head
+        new_list = LinkedPair(key, value)
+        # set next to already existing head
+        new_list.next = node
+        # hashtable needs to update
+        self.storage[index] = new_list
+
 
 
     def remove(self, key):
@@ -119,7 +129,7 @@ class HashTable:
         for i in range(self.capacity):
             index_i = self.storage[index]
             # check if index is not None and check if index[0] is the key
-            if index_i is not None and index_i[0] == key:
+            if index_i is not None and index_i.key == key:
                 return None
         return
 
@@ -162,8 +172,8 @@ class HashTable:
         for i in range(self.capacity):
             index_i = self.storage[index]
             # check if index is not None and check if index[0] is the key
-            if index_i is not None and index_i[0] == key:
-                return index_i[1]
+            if index_i is not None and index_i.key == key:
+                return index_i.value
         return None
 
 
