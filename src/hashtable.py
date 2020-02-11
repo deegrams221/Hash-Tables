@@ -59,7 +59,7 @@ class HashTable:
                 self.storage[i] = [ key,value ]
             # else if i is index (just print for now, collision handling tomorrow)
             elif i == index:
-                print(f"WARNING: Not empty.")
+                print(f"\nWARNING: Not empty.")
                 return None
 
 
@@ -107,7 +107,20 @@ class HashTable:
         # rehash all key/value pairs.
         # Fill this in.
         # '''
-        pass
+        # pass
+
+        # Doubles the capacity of the hash table & rehash all key/value pairs.
+        self.capacity *= 2
+        new_storage = [None] * self.capacity
+        # for index in range storage // 2
+        for i in range(self.capacity // 2):
+            # set node to storage index
+            node = self.storage[i]
+            # if node is not None, pass for now, collision handling tomorrow
+            if node != None:
+                pass
+        # reassign the referance (change the pointer)
+        self.storage = new_storage
 
 
 
