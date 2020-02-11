@@ -114,15 +114,15 @@ class HashTable:
         # return
 
     # Day 2 Assignment:
-        # index = self._hash_mod(key)
-        # if self.storage[index] is not None:
-        #     if self.storage[index][0] == key:
-        #         self.storage[index] = None
-        #     else:
-        #         print(f"WARNING:  Collision has occured at {index}")
-        # else:
-        #     print(f"Warning key ({key}) not found.")
-        # return
+        index = self._hash_mod(key)
+        # loop
+        for i in range(self.capacity):
+            index_i = self.storage[index]
+            # check if index is not None and check if index[0] is the key
+            if index_i is not None and index_i[0] == key:
+                return None
+        return
+
 
     def retrieve(self, key):
         '''
