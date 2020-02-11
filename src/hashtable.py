@@ -1,6 +1,6 @@
-# '''
-# Linked List hash table key/value pair
-# '''
+'''
+Linked List hash table key/value pair
+'''
 class LinkedPair:
     def __init__(self, key, value):
         self.key = key
